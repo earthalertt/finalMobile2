@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         button_save.setOnClickListener(View.OnClickListener {
 
-            if (validaton()){
+            if (validation()){
                 val user: Users = Users()
                 var success: Boolean = false
                 user.firstName = editText_firstName.text.toString()
@@ -32,6 +32,23 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        button_show.setOnClickListener(View.OnClickListener {
+            var user = dbHandler!!.getAllUsers()
+            textView_show.setText(user)
+        })
+    }
 
+    fun validation(): Boolean{
+        var validate = false
+
+        if (!editText_firstName.text.toString().equals("")&&
+                !editText_lastName.text.toString().equals("")){
+            validate = true
+        }else{
+            validate = false
+            val toast = Toast.makeText(this,"Fill all details", Toast.LENGTH_LONG).show()
+        }
+
+        return validate
     }
 }
