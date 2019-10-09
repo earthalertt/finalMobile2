@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var dbHandler:DatabaseHandler? = null
+    var dbHandler: DatabaseHandler? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
         dbHandler = DatabaseHandler(this)
 
         button_save.setOnClickListener(View.OnClickListener {
-
             if (validation()){
                 val user: Users = Users()
                 var success: Boolean = false

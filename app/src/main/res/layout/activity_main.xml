@@ -44,7 +44,7 @@
         android:layout_marginTop="32dp"
         android:text="@string/save"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText_lastName"/>
+        app:layout_constraintTop_toBottomOf="@+id/editText_lastName" />
 
     <Button
         android:id="@+id/button_show"
@@ -54,8 +54,8 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="32dp"
         android:text="@string/show"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText_lastName"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_lastName" />
 
     <TextView
         android:id="@+id/textView_show"
