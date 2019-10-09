@@ -29,6 +29,34 @@ class DatabaseHandler (context: Context):
         return (Integer.parseInt("$_success")!= -1)
     }
 
+    fun  getAllUsers(): String {
+        var allUser: String="";
+        val db = readableDatabase
+        val selectAllQuery = "SELECT * FROM $TABLE_NAME"
+        val cursor = db.rawQuery(selectAllQuery,null)
+        if (cursor != null){
+            if (cursor.moveToFirst()){
+                do {
+                    var id = cursor.getString(cursor.getColumnIndex(ID))
+                    var firstName = cursor.getString(cursor.getColumnIndex(FIRST_NAME))
+                    var lastName = cursor.getString(cursor.getColumnIndex(LAST_NAME))
 
+                    allUser = "$allUser\n$id $firstName $lastName"
+                }while (cursor.moveToNext())
+            }
+        }
+        cursor.close()
+        db.close()
+        return allUser
+    }
+
+    companion object{
+        private val DB_NAME = "UsersDB"
+        private val DB_VERSIOM = 1;
+        private val TABLE_NAME = "users"
+        private val ID = "id"
+        private val FIRST_NAME = "FirstName"
+        private val LAST_NAME = "LastName"
+    }
 
 }
